@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bg0ri58l8jqoe"
+path="res://.godot/imported/Gamejam Daytime (Draft 3).mp3-e08209d644124c54b65cda73da770d9d.mp3str"
+
+[deps]
+
+source_file="res://Game/Sound/Gamejam Daytime (Draft 3).mp3"
+dest_files=["res://.godot/imported/Gamejam Daytime (Draft 3).mp3-e08209d644124c54b65cda73da770d9d.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

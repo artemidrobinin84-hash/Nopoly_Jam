@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ca3v5uhtnfcpg"]
+
+[ext_resource type="Script" uid="uid://bqau0h122ktxh" path="res://Game/game.gd" id="1_jcm6v"]
+[ext_resource type="PackedScene" uid="uid://cgw06551g4toh" path="res://Game/camera_3d.tscn" id="2_1r4le"]
+[ext_resource type="PackedScene" uid="uid://bo2smyvv8bi8l" path="res://Game/Character/character.tscn" id="2_7raqb"]
+[ext_resource type="AudioStream" uid="uid://bg0ri58l8jqoe" path="res://Game/Sound/Gamejam Daytime (Draft 3).mp3" id="3_7raqb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1r4le"]
+roughness = 0.8
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j7vem"]
+material = SubResource("StandardMaterial3D_1r4le")
+size = Vector2(25, 25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1r4le"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[sub_resource type="Environment" id="Environment_1r4le"]
+background_mode = 2
+
+[node name="game" type="Node3D" unique_id=1438996176]
+script = ExtResource("1_jcm6v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=796660227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0873785, 0)
+mesh = SubResource("PlaneMesh_j7vem")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=909032289]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1605646646]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_1r4le")
+
+[node name="Character" parent="." unique_id=1428432560 instance=ExtResource("2_7raqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8545189, 1.456933, 0.71901417)
+
+[node name="Camera3D" parent="Character" unique_id=1541527969 instance=ExtResource("2_1r4le")]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0.6866627, 105.09754, 184.11555)
+projection = 1
+size = 25.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1343043289]
+transform = Transform3D(1, 0, 0, 0, -0.011239694, 0.9999369, 0, -0.9999369, -0.011239694, 0, 12.223949, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=332441710]
+environment = SubResource("Environment_1r4le")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1024643915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.134862, 4.092843, 0.1067915)
+stream = ExtResource("3_7raqb")
+volume_db = 20.0
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=287042433]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1352600728]
+offset_left = 330.0
+offset_top = 121.0
+offset_right = 1438.0
+offset_bottom = 234.0

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cgw06551g4toh"]
+
+[node name="Camera3D" type="Camera3D" unique_id=1541527969]
+transform = Transform3D(1, 0, 0, 0, -0.005759545, 0.99998343, 0, -0.99998343, -0.005759545, 0, 2.2812924, 0.003991127)
+current = true
+fov = 93.94222
