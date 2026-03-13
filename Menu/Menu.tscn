@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://cdpl1dhhd8umg"]
 
-[ext_resource type="Texture2D" uid="uid://m60w2i40u3if" path="res://Menu/button_purple.png" id="1_crea4"]
 [ext_resource type="Script" uid="uid://g2x7088bc5d8" path="res://Menu/menu.gd" id="1_w32jx"]
-[ext_resource type="Texture2D" uid="uid://bkxj476wavgel" path="res://Menu/button.png" id="2_w32jx"]
-[ext_resource type="Texture2D" uid="uid://b8bavmgfpqtq7" path="res://Menu/button_pushed.png" id="3_0cyjp"]
+[ext_resource type="Texture2D" uid="uid://crbkoexv373c4" path="res://Menu/button3.png" id="2_e4kd3"]
 [ext_resource type="FontFile" uid="uid://b6gii1n5unfio" path="res://Game/Something/Montserrat-Black.ttf" id="4_crea4"]
 [ext_resource type="FontFile" uid="uid://bbrgnk5obbwro" path="res://Game/Something/Comfortaa-VariableFont_wght.ttf" id="4_m87qx"]
 [ext_resource type="Script" uid="uid://dp6rrvpmru8k4" path="res://Menu/play.gd" id="5_0cyjp"]
@@ -12,21 +10,44 @@
 [ext_resource type="Texture2D" uid="uid://dfugp88tn5l26" path="res://Menu/Sound_Menu.png" id="9_fipr7"]
 [ext_resource type="Texture2D" uid="uid://187w57f1nm81" path="res://Menu/aw4rgaerh.png" id="10_62dhm"]
 [ext_resource type="Texture2D" uid="uid://maltxi7u78av" path="res://Menu/polzunok1.png" id="11_8iu1u"]
+[ext_resource type="Texture2D" uid="uid://dgh1v5d8fpctk" path="res://Menu/BackGround1.png" id="12_e4kd3"]
 [ext_resource type="AudioStream" uid="uid://1v6safdl0mdc" path="res://Game/Sound/cartoon-button-click-sound.mp3" id="13_b7iep"]
+[ext_resource type="Script" uid="uid://c6nuwgj1fgw0n" path="res://Menu/background.gd" id="14_e4kd3"]
+[ext_resource type="Texture2D" uid="uid://bkf5yjqpraahj" path="res://Menu/text6.png" id="14_p7c5i"]
+[ext_resource type="Script" uid="uid://bt7eucwdngjy5" path="res://Menu/bckground.gd" id="15_5t8sb"]
+[ext_resource type="Texture2D" uid="uid://cvlageku67e6d" path="res://Menu/Boom1.png" id="16_p7c5i"]
+[ext_resource type="Script" uid="uid://j8n0pncpkl8p" path="res://Menu/texture_button.gd" id="17_oyhu1"]
+[ext_resource type="Script" uid="uid://cde3d1cstwcc4" path="res://Menu/texture_button_2.gd" id="18_kkqmy"]
+[ext_resource type="Script" uid="uid://clrmc3n6jx3vd" path="res://Menu/texture_button_3.gd" id="19_qseqb"]
+[ext_resource type="Script" uid="uid://b4yj45pqvv531" path="res://Menu/texture_button_4.gd" id="20_ibcxl"]
+[ext_resource type="Script" uid="uid://bapxdfwx5s7gd" path="res://Menu/texture_rect.gd" id="21_kkqmy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkqmy"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iu1u"]
+content_margin_left = 0.0
+content_margin_top = 28.0
+content_margin_right = 0.0
+content_margin_bottom = 28.0
 bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7iep"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
 expand_margin_top = 28.0
 expand_margin_bottom = 28.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7iep"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 30
-corner_radius_bottom_left = 30
-expand_margin_top = 28.0
-expand_margin_bottom = 28.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qseqb"]
+content_margin_left = 0.0
+content_margin_top = 28.0
+content_margin_right = 0.0
+content_margin_bottom = 28.0
 
 [node name="MainMenu" type="Control" unique_id=1228798898]
 layout_mode = 3
@@ -38,15 +59,16 @@ grow_vertical = 2
 script = ExtResource("1_w32jx")
 
 [node name="Play" type="TextureButton" parent="." unique_id=977156104]
+top_level = true
 layout_mode = 0
 offset_left = 750.0
-offset_top = 500.0
+offset_top = 504.0
 offset_right = 1132.0
-offset_bottom = 659.0
+offset_bottom = 663.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("1_crea4")
-texture_pressed = ExtResource("2_w32jx")
-texture_hover = ExtResource("3_0cyjp")
+texture_normal = ExtResource("2_e4kd3")
+texture_pressed = ExtResource("2_e4kd3")
+texture_hover = ExtResource("2_e4kd3")
 script = ExtResource("5_0cyjp")
 
 [node name="Label" type="Label" parent="Play" unique_id=810420857]
@@ -61,15 +83,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sound" type="TextureButton" parent="." unique_id=1374137528]
+top_level = true
 layout_mode = 0
 offset_left = 750.0
-offset_top = 700.0
+offset_top = 701.0
 offset_right = 1132.0
-offset_bottom = 859.0
+offset_bottom = 860.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("1_crea4")
-texture_pressed = ExtResource("2_w32jx")
-texture_hover = ExtResource("3_0cyjp")
+texture_normal = ExtResource("2_e4kd3")
+texture_pressed = ExtResource("2_e4kd3")
+texture_hover = ExtResource("2_e4kd3")
 script = ExtResource("7_m87qx")
 
 [node name="Label" type="Label" parent="Sound" unique_id=1135414473]
@@ -85,15 +108,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Credit" type="TextureButton" parent="." unique_id=83809050]
+top_level = true
 layout_mode = 0
 offset_left = 750.0
 offset_top = 900.0
 offset_right = 1132.0
 offset_bottom = 1059.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("1_crea4")
-texture_pressed = ExtResource("2_w32jx")
-texture_hover = ExtResource("3_0cyjp")
+texture_normal = ExtResource("2_e4kd3")
+texture_pressed = ExtResource("2_e4kd3")
+texture_hover = ExtResource("2_e4kd3")
 script = ExtResource("8_3c4i7")
 
 [node name="Label" type="Label" parent="Credit" unique_id=1198568882]
@@ -107,19 +131,19 @@ text = "Credit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Background" type="TextureRect" parent="." unique_id=423356101]
-layout_mode = 0
-offset_right = 1923.0
-offset_bottom = 1077.0
-mouse_filter = 2
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=2009476961]
+stream = ExtResource("13_b7iep")
+volume_db = -10.0
 
-[node name="Sound_Settings" type="Control" parent="Background" unique_id=981143611]
-visible = false
+[node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=990225542]
+
+[node name="Sound_Settings" type="Control" parent="." unique_id=1587766780]
+top_level = true
 anchors_preset = 0
 offset_right = 1915.0
 offset_bottom = 1075.0
 
-[node name="TextureRect" type="TextureRect" parent="Background/Sound_Settings" unique_id=189669164]
+[node name="TextureRect" type="TextureRect" parent="Sound_Settings" unique_id=816770024]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 5.0
@@ -128,7 +152,7 @@ offset_bottom = 1080.0
 mouse_filter = 0
 texture = ExtResource("9_fipr7")
 
-[node name="Exit1" type="Button" parent="Background/Sound_Settings/TextureRect" unique_id=1828569530]
+[node name="Exit1" type="Button" parent="Sound_Settings/TextureRect" unique_id=735118541]
 layout_mode = 0
 offset_left = 1732.0
 offset_top = 21.0
@@ -139,12 +163,46 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("10_62dhm")
 flat = true
 
-[node name="Master" type="HSlider" parent="Background/Sound_Settings/TextureRect" unique_id=754616771]
+[node name="Master" type="HSlider" parent="Sound_Settings/TextureRect" unique_id=626764973]
 layout_mode = 0
 offset_left = 50.0
-offset_top = 150.0
+offset_top = 326.0
 offset_right = 928.0
-offset_bottom = 452.0
+offset_bottom = 390.0
+mouse_default_cursor_shape = 2
+theme_override_icons/grabber = ExtResource("11_8iu1u")
+theme_override_icons/grabber_highlight = ExtResource("11_8iu1u")
+theme_override_icons/grabber_disabled = ExtResource("11_8iu1u")
+theme_override_styles/slider = SubResource("StyleBoxFlat_kkqmy")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_8iu1u")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_b7iep")
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Music" type="HSlider" parent="Sound_Settings/TextureRect" unique_id=1466277456]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 599.0
+offset_right = 928.0
+offset_bottom = 663.0
+mouse_default_cursor_shape = 2
+theme_override_icons/grabber = ExtResource("11_8iu1u")
+theme_override_icons/grabber_highlight = ExtResource("11_8iu1u")
+theme_override_icons/grabber_disabled = ExtResource("11_8iu1u")
+theme_override_styles/slider = SubResource("StyleBoxFlat_qseqb")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_8iu1u")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_b7iep")
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="SFX" type="HSlider" parent="Sound_Settings/TextureRect" unique_id=703438494]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 909.0
+offset_right = 928.0
+offset_bottom = 973.0
 mouse_default_cursor_shape = 2
 theme_override_icons/grabber = ExtResource("11_8iu1u")
 theme_override_icons/grabber_highlight = ExtResource("11_8iu1u")
@@ -155,11 +213,12 @@ max_value = 1.0
 step = 0.001
 value = 1.0
 
-[node name="Label" type="Label" parent="Background/Sound_Settings/TextureRect/Master" unique_id=537136944]
+[node name="Label" type="Label" parent="Sound_Settings/TextureRect" unique_id=347287646]
 layout_mode = 0
-offset_top = -50.0
-offset_right = 401.0
-offset_bottom = 150.0
+offset_left = 50.0
+offset_top = 100.0
+offset_right = 651.0
+offset_bottom = 300.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 30
@@ -167,55 +226,12 @@ theme_override_fonts/font = ExtResource("4_m87qx")
 theme_override_font_sizes/font_size = 150
 text = "General"
 
-[node name="Music" type="HSlider" parent="Background/Sound_Settings/TextureRect" unique_id=1707262444]
+[node name="Label2" type="Label" parent="Sound_Settings/TextureRect" unique_id=1564895502]
 layout_mode = 0
 offset_left = 50.0
-offset_top = 450.0
-offset_right = 928.0
-offset_bottom = 752.0
-mouse_default_cursor_shape = 2
-theme_override_icons/grabber = ExtResource("11_8iu1u")
-theme_override_icons/grabber_highlight = ExtResource("11_8iu1u")
-theme_override_icons/grabber_disabled = ExtResource("11_8iu1u")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_8iu1u")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_b7iep")
-max_value = 1.0
-step = 0.001
-value = 1.0
-
-[node name="Label" type="Label" parent="Background/Sound_Settings/TextureRect/Music" unique_id=1024643210]
-layout_mode = 0
-offset_top = -50.0
-offset_right = 401.0
-offset_bottom = 150.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 30
-theme_override_fonts/font = ExtResource("4_m87qx")
-theme_override_font_sizes/font_size = 150
-text = "Music"
-
-[node name="SFX" type="HSlider" parent="Background/Sound_Settings/TextureRect" unique_id=1519557129]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 750.0
-offset_right = 928.0
-offset_bottom = 1052.0
-mouse_default_cursor_shape = 2
-theme_override_icons/grabber = ExtResource("11_8iu1u")
-theme_override_icons/grabber_highlight = ExtResource("11_8iu1u")
-theme_override_icons/grabber_disabled = ExtResource("11_8iu1u")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_8iu1u")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_b7iep")
-max_value = 1.0
-step = 0.001
-value = 1.0
-
-[node name="Label" type="Label" parent="Background/Sound_Settings/TextureRect/SFX" unique_id=1778472653]
-layout_mode = 0
-offset_top = -50.0
-offset_right = 401.0
-offset_bottom = 150.0
+offset_top = 700.0
+offset_right = 451.0
+offset_bottom = 900.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 30
@@ -223,28 +239,34 @@ theme_override_fonts/font = ExtResource("4_m87qx")
 theme_override_font_sizes/font_size = 150
 text = "SFX"
 
-[node name="CreditMenu" type="Control" parent="Background" unique_id=1376345429]
+[node name="Label3" type="Label" parent="Sound_Settings/TextureRect" unique_id=225557204]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 400.0
+offset_right = 512.0
+offset_bottom = 600.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("4_m87qx")
+theme_override_font_sizes/font_size = 150
+text = "Music"
+
+[node name="CreditMenu" type="Control" parent="." unique_id=2127148123]
 visible = false
+top_level = true
 anchors_preset = 0
 offset_right = 504.0
 offset_bottom = 301.0
 
-[node name="TextureRect1" type="TextureRect" parent="Background/CreditMenu" unique_id=1689351468]
+[node name="TextureRect1" type="TextureRect" parent="CreditMenu" unique_id=1890546169]
 layout_mode = 0
 offset_right = 1915.0
 offset_bottom = 1078.0
 mouse_filter = 0
 texture = ExtResource("9_fipr7")
 
-[node name="HSeparator" type="HSeparator" parent="Background/CreditMenu/TextureRect1" unique_id=1272553776]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 13.0
-offset_right = 1896.0
-offset_bottom = 114.833336
-scale = Vector2(1, 6)
-
-[node name="Label" type="Label" parent="Background/CreditMenu/TextureRect1" unique_id=2001293026]
+[node name="Label" type="Label" parent="CreditMenu/TextureRect1" unique_id=1890693988]
 layout_mode = 0
 offset_right = 1897.0
 offset_bottom = 317.0
@@ -257,7 +279,7 @@ text = "Credits:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Background/CreditMenu/TextureRect1" unique_id=1728902756]
+[node name="Label2" type="Label" parent="CreditMenu/TextureRect1" unique_id=650946755]
 layout_mode = 0
 offset_left = 195.0
 offset_top = 318.0
@@ -268,15 +290,10 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("4_m87qx")
 theme_override_font_sizes/font_size = 90
-text = "Programmer:
-
-Visual:
-
-Sound:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Exit1" type="Button" parent="Background/CreditMenu/TextureRect1" unique_id=113237705]
+[node name="Exit1" type="Button" parent="CreditMenu/TextureRect1" unique_id=513923270]
 layout_mode = 0
 offset_left = 1732.0
 offset_top = 21.0
@@ -287,33 +304,83 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("10_62dhm")
 flat = true
 
-[node name="Label3" type="Label" parent="Background/CreditMenu/TextureRect1" unique_id=334493919]
+[node name="Label3" type="Label" parent="CreditMenu/TextureRect1" unique_id=1284724811]
 layout_mode = 0
-offset_left = 1000.0
-offset_top = 318.0
-offset_right = 1601.0
-offset_bottom = 1018.0
+offset_left = 181.0
+offset_top = 388.0
+offset_right = 1698.0
+offset_bottom = 1088.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("4_m87qx")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 200
 text = "Name
-
-Pan
-
-Lee On"
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Click" type="AudioStreamPlayer" parent="." unique_id=2009476961]
-stream = ExtResource("13_b7iep")
+[node name="Background" type="TextureRect" parent="." unique_id=1680804190]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("12_e4kd3")
+script = ExtResource("14_e4kd3")
 
-[node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=990225542]
+[node name="TextureButton" type="TextureButton" parent="Background" unique_id=1712365626]
+layout_mode = 0
+offset_left = 30.0
+offset_right = 542.0
+offset_bottom = 512.0
+texture_normal = ExtResource("16_p7c5i")
+script = ExtResource("17_oyhu1")
+
+[node name="TextureButton2" type="TextureButton" parent="Background" unique_id=1931704323]
+layout_mode = 0
+offset_left = 1459.0
+offset_top = 17.0
+offset_right = 1971.0
+offset_bottom = 529.0
+texture_normal = ExtResource("16_p7c5i")
+script = ExtResource("18_kkqmy")
+
+[node name="TextureButton3" type="TextureButton" parent="Background" unique_id=1977887878]
+layout_mode = 0
+offset_left = 1387.0
+offset_top = 558.0
+offset_right = 1899.0
+offset_bottom = 1070.0
+texture_normal = ExtResource("16_p7c5i")
+script = ExtResource("19_qseqb")
+
+[node name="TextureButton4" type="TextureButton" parent="Background" unique_id=1817831369]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 565.0
+offset_right = 534.0
+offset_bottom = 1077.0
+texture_normal = ExtResource("16_p7c5i")
+script = ExtResource("20_ibcxl")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1734074878]
+layout_mode = 0
+offset_left = 641.0
+offset_top = 454.0
+offset_right = 1314.0
+offset_bottom = 1083.0
+texture = ExtResource("16_p7c5i")
+script = ExtResource("21_kkqmy")
+
+[node name="bckground" type="TextureRect" parent="." unique_id=650455991]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 71.0
+offset_right = 1746.0
+offset_bottom = 439.0
+texture = ExtResource("14_p7c5i")
+stretch_mode = 3
+script = ExtResource("15_5t8sb")
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Sound" to="." method="_on_sound_pressed"]
 [connection signal="pressed" from="Credit" to="." method="_on_credit_pressed"]
-[connection signal="value_changed" from="Background/Sound_Settings/TextureRect/Master" to="." method="_on_master_value_changed"]
-[connection signal="value_changed" from="Background/Sound_Settings/TextureRect/Music" to="." method="_on_music_value_changed"]
-[connection signal="value_changed" from="Background/Sound_Settings/TextureRect/SFX" to="." method="_on_sfx_value_changed"]

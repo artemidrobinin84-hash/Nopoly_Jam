@@ -11,17 +11,12 @@ config_version=5
 [application]
 
 config/name="Nopoly-Jam"
-run/main_scene="uid://ca3v5uhtnfcpg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
 
 buses/default_bus_layout="uid://b5mxx2ygo3rtj"
-
-[autoload]
-
-Global="*uid://bqaxybowmf3rv"
 
 [display]
 

@@ -1,8 +1,8 @@
 extends Control
 
 
-@onready var sound_settings = $Background/Sound_Settings
-@onready var credit = $Background/CreditMenu
+@onready var sound_settings = $Sound_Settings
+@onready var credit = $CreditMenu
 @onready var play_btn = $Play
 @onready var credit_btn = $Credit
 @onready var sound_btn = $Sound
@@ -18,13 +18,13 @@ func _ready() -> void:
 	_safe_connect(play_btn.pressed, _on_play_pressed)
 	
 	# Кнопки выхода
-	_safe_connect($Background/Sound_Settings/TextureRect/Exit1.pressed, close_settings)
-	_safe_connect($Background/CreditMenu/TextureRect1/Exit1.pressed, close_credit)
+	_safe_connect($Sound_Settings/TextureRect/Exit1.pressed, close_settings)
+	_safe_connect($CreditMenu/TextureRect1/Exit1.pressed, close_credit)
 
 	# Слайдеры звука
-	var m_sl = $Background/Sound_Settings/TextureRect/Master
-	var mu_sl = $Background/Sound_Settings/TextureRect/Music
-	var s_sl = $Background/Sound_Settings/TextureRect/SFX
+	var m_sl = $Sound_Settings/TextureRect/Master
+	var mu_sl = $Sound_Settings/TextureRect/Music
+	var s_sl = $Sound_Settings/TextureRect/SFX
 	
 	_safe_connect(m_sl.value_changed, _on_master_value_changed)
 	_safe_connect(mu_sl.value_changed, _on_music_value_changed)
