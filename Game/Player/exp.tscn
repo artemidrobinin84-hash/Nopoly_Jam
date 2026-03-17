@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://c4p2icb2y2iyc"]
+
+[ext_resource type="Texture2D" uid="uid://tc7886hi4b22" path="res://Game/Attack/Pechat.png" id="1_nd5u4"]
+[ext_resource type="Script" uid="uid://dkibsnoi1dol6" path="res://Game/Player/exp.gd" id="1_o5dn0"]
+[ext_resource type="Texture2D" uid="uid://cvlageku67e6d" path="res://Menu/Boom1.png" id="2_o5dn0"]
+[ext_resource type="Texture2D" uid="uid://bao0h51xnhsms" path="res://Menu/Boom2.png" id="3_sfxmo"]
+[ext_resource type="AudioStream" uid="uid://baun21fo4vr34" path="res://Game/Sound/explosion.wav" id="4_ywkrl"]
+[ext_resource type="AudioStream" uid="uid://daet34y25br4" path="res://Game/Sound/explosion (1).wav" id="5_21bnd"]
+[ext_resource type="Texture2D" uid="uid://sng5ttij3m8e" path="res://Menu/Boom3.png" id="5_dv8xf"]
+[ext_resource type="AudioStream" uid="uid://dts3jelkyrqqq" path="res://Game/Sound/explosion (2).wav" id="6_sfxmo"]
+[ext_resource type="AudioStream" uid="uid://bt6778vofrswn" path="res://Game/Sound/explosion (3).wav" id="7_dv8xf"]
+[ext_resource type="AudioStream" uid="uid://c86estbqhvo2g" path="res://Game/Sound/finger-snap-1-time (mp3cut.net).mp3" id="8_ejduh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hu48y"]
+radius = 272.00183
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_21bnd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fcd63"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dv8xf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sfxmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o5dn0")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 30.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ywkrl"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_5cs4e"]
+colors = PackedColorArray(1, 0.57254905, 0, 1, 0.6156863, 0.078431375, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v0hl6"]
+gradient = SubResource("Gradient_5cs4e")
+width = 8
+height = 8
+
+[sub_resource type="Gradient" id="Gradient_m42y7"]
+colors = PackedColorArray(1, 0.57254905, 0, 1, 0.61628276, 0.07980571, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5cs4e"]
+gradient = SubResource("Gradient_m42y7")
+
+[sub_resource type="Curve" id="Curve_m42y7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5cs4e"]
+curve = SubResource("Curve_m42y7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m42y7"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+angle_min = 360.00003
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 400.0
+initial_velocity_max = 800.0
+radial_velocity_min = 399.99997
+radial_velocity_max = 599.99994
+gravity = Vector3(0, 0, 0)
+damping_min = 150.0
+damping_max = 200.00002
+scale_curve = SubResource("CurveTexture_5cs4e")
+color_ramp = SubResource("GradientTexture1D_5cs4e")
+
+[node name="Exp" type="Area2D" unique_id=905007152]
+z_index = 10
+script = ExtResource("1_o5dn0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=637330880]
+position = Vector2(-8, 0)
+shape = SubResource("CircleShape2D_hu48y")
+
+[node name="Rune" type="Sprite2D" parent="." unique_id=1920822872]
+position = Vector2(-19.999985, -3.500011)
+scale = Vector2(6.3437505, 6.7656255)
+texture = ExtResource("1_nd5u4")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1236857433]
+material = SubResource("CanvasItemMaterial_21bnd")
+scale = Vector2(0.85, 0.85)
+sprite_frames = SubResource("SpriteFrames_fcd63")
+animation = &"Attack"
+frame = 2
+frame_progress = 1.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D2" unique_id=1681518547]
+material = SubResource("CanvasItemMaterial_ywkrl")
+emitting = false
+amount = 200
+texture = SubResource("GradientTexture2D_v0hl6")
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_m42y7")
+
+[node name="Boom" type="AudioStreamPlayer" parent="." unique_id=1878663765]
+stream = ExtResource("4_ywkrl")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Boom2" type="AudioStreamPlayer" parent="." unique_id=1360931157]
+stream = ExtResource("5_21bnd")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Boom3" type="AudioStreamPlayer" parent="." unique_id=2057204131]
+stream = ExtResource("6_sfxmo")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Boom4" type="AudioStreamPlayer" parent="." unique_id=1856753476]
+stream = ExtResource("7_dv8xf")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Snap" type="AudioStreamPlayer" parent="." unique_id=836142392]
+stream = ExtResource("8_ejduh")
+volume_db = 5.0

@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://cjrfig1al5id6"]
+
+[ext_resource type="Script" uid="uid://baxw38pw2efol" path="res://Game/Enemy/knight.gd" id="1_6jogb"]
+[ext_resource type="Texture2D" uid="uid://b8a6w4i78pkcy" path="res://Game/Enemy/KnightSprite.png" id="1_mkagr"]
+[ext_resource type="Texture2D" uid="uid://c1dqxk5mkb47t" path="res://Game/Enemy/Attack.png" id="2_m5bfe"]
+[ext_resource type="AudioStream" uid="uid://ddjb0kwigntc" path="res://Game/Sound/missing-a-sword-fight.mp3" id="4_8ia3n"]
+[ext_resource type="Texture2D" uid="uid://csveldkab0363" path="res://Game/Attack/XOXOBarUnder.png" id="5_wfc0k"]
+[ext_resource type="Texture2D" uid="uid://ba5dasg4r5iql" path="res://Game/Enemy/XOXOBarProgress.png" id="6_ajkai"]
+[ext_resource type="AudioStream" uid="uid://3ftokyo8cc66" path="res://Game/Sound/parry-ultrakill.mp3" id="8_a5dix"]
+[ext_resource type="Script" uid="uid://bs040s1cwh27d" path="res://Game/Enemy/texture_progress_bar.gd" id="8_pv2qn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd25i"]
+size = Vector2(54, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mkagr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mkagr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6jogb"]
+radius = 634.0008
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ia3n"]
+size = Vector2(94, 75.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jogb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m5bfe")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 10.0
+}]
+
+[node name="Knight" type="CharacterBody2D" unique_id=1932637651]
+collision_layer = 3
+motion_mode = 1
+script = ExtResource("1_6jogb")
+speed = 250.0
+attack_damage = 5
+stop_distance = 0.0
+attack_cooldown = 0.5
+attack_range = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=299422688]
+position = Vector2(4, -2)
+shape = SubResource("RectangleShape2D_hd25i")
+
+[node name="Knight" type="AnimatedSprite2D" parent="." unique_id=1610174484]
+position = Vector2(-4, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_mkagr")
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1748634562]
+
+[node name="DetectArea" type="Area2D" parent="." unique_id=1983374686]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea" unique_id=2068904438]
+shape = SubResource("CircleShape2D_6jogb")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1286758216]
+position = Vector2(59, -2)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1014553983]
+position = Vector2(-26, 0.25)
+shape = SubResource("RectangleShape2D_8ia3n")
+
+[node name="Attac" type="AnimatedSprite2D" parent="Area2D" unique_id=1661605881]
+visible = false
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_6jogb")
+animation = &"Attack"
+frame_progress = 1.0
+
+[node name="Slash" type="AudioStreamPlayer" parent="." unique_id=1938862032]
+stream = ExtResource("4_8ia3n")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1081802544]
+top_level = true
+texture_filter = 1
+offset_left = -23.0
+offset_top = -36.0
+offset_right = 31.0
+offset_bottom = -29.0
+pivot_offset = Vector2(64, 16)
+nine_patch_stretch = true
+texture_under = ExtResource("5_wfc0k")
+texture_progress = ExtResource("6_ajkai")
+script = ExtResource("8_pv2qn")
+
+[node name="ultra" type="AudioStreamPlayer" parent="." unique_id=799787637]
+stream = ExtResource("8_a5dix")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="area_entered" from="DetectArea" to="." method="_on_area_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bsiae2c7jk8ll"]
+
+[ext_resource type="Script" uid="uid://bcldexmqmh0ap" path="res://Game/Enemy/death.gd" id="1_v64n8"]
+
+[sub_resource type="Gradient" id="Gradient_yu15k"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v64n8"]
+gradient = SubResource("Gradient_yu15k")
+width = 3
+height = 3
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j30uo"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=457992813]
+emitting = false
+amount = 50
+texture = SubResource("GradientTexture2D_v64n8")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_j30uo")
+script = ExtResource("1_v64n8")

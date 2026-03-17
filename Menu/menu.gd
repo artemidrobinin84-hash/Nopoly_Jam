@@ -80,7 +80,7 @@ func close_credit():
 
 func _on_play_pressed() -> void:
 	if has_node("Click"): $Click.play()
-	get_tree().change_scene_to_file("res://Game/game.tscn")
+	get_tree().change_scene_to_file("res://Game/level/level_1.tscn")
 
 # --- ЗВУК ---
 

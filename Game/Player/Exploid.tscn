@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://b33nkh1ynlfut"]
+
+[ext_resource type="Texture2D" uid="uid://bgra14c538adi" path="res://Game/Player/ExploidSprite.png" id="1_kmcwd"]
+[ext_resource type="Script" uid="uid://0hpj83we413b" path="res://Game/Player/exploid.gd" id="1_lcdtj"]
+[ext_resource type="Texture2D" uid="uid://b0pqrectj50tx" path="res://Game/level/Sprite.png" id="3_y6tue"]
+[ext_resource type="PackedScene" uid="uid://c4p2icb2y2iyc" path="res://Game/Player/exp.tscn" id="4_r5134"]
+[ext_resource type="AudioStream" uid="uid://baun21fo4vr34" path="res://Game/Sound/explosion.wav" id="7_v0hl6"]
+[ext_resource type="AudioStream" uid="uid://daet34y25br4" path="res://Game/Sound/explosion (1).wav" id="8_jalb8"]
+[ext_resource type="AudioStream" uid="uid://dts3jelkyrqqq" path="res://Game/Sound/explosion (2).wav" id="9_elk8r"]
+[ext_resource type="AudioStream" uid="uid://bt6778vofrswn" path="res://Game/Sound/explosion (3).wav" id="10_deoqt"]
+[ext_resource type="AudioStream" uid="uid://c86estbqhvo2g" path="res://Game/Sound/finger-snap-1-time (mp3cut.net).mp3" id="10_m42y7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvx1s"]
+size = Vector2(48, 56)
+
+[node name="Exploid" type="CharacterBody2D" unique_id=23879815]
+script = ExtResource("1_lcdtj")
+speed = 300.0
+attack_damage = 20
+explosion_scene = ExtResource("4_r5134")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1344760292]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_qvx1s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1715459221]
+texture_filter = 1
+position = Vector2(1, 3)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_kmcwd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=2079344496]
+visible = false
+position = Vector2(-52.750008, -4.2499924)
+scale = Vector2(2.7604165, 3.71875)
+texture = ExtResource("3_y6tue")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2095773547]
+zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+
+[node name="Boom" type="AudioStreamPlayer" parent="." unique_id=70505317]
+stream = ExtResource("7_v0hl6")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Boom2" type="AudioStreamPlayer" parent="." unique_id=721885170]
+stream = ExtResource("8_jalb8")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Boom3" type="AudioStreamPlayer" parent="." unique_id=209670211]
+stream = ExtResource("9_elk8r")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Boom4" type="AudioStreamPlayer" parent="." unique_id=1245919389]
+stream = ExtResource("10_deoqt")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Snap" type="AudioStreamPlayer" parent="." unique_id=216111448]
+stream = ExtResource("10_m42y7")
+volume_db = 5.0
