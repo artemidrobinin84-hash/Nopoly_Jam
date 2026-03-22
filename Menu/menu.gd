@@ -10,9 +10,6 @@ extends Control
 func _ready() -> void:
 	pivot_offset = size / 2
 	
-	# Настройка фильтров мыши
-	
-	# Подключение кнопок меню
 	_safe_connect(credit_btn.pressed, open_credit)
 	_safe_connect(sound_btn.pressed, open_settings)
 	_safe_connect(play_btn.pressed, _on_play_pressed)
@@ -30,11 +27,9 @@ func _ready() -> void:
 	_safe_connect(mu_sl.value_changed, _on_music_value_changed)
 	_safe_connect(s_sl.value_changed, _on_sfx_value_changed)
 
-	# Звуки наведения
 	_safe_connect(play_btn.mouse_entered, _on_button_hover)
 	_safe_connect(credit_btn.mouse_entered, _on_button_hover)
 	_safe_connect(sound_btn.mouse_entered, _on_button_hover)
-
 func _safe_connect(sig: Signal, target: Callable):
 	if !sig.is_connected(target):
 		sig.connect(target)
@@ -42,12 +37,8 @@ func _safe_connect(sig: Signal, target: Callable):
 func _on_button_hover() -> void:
 	if has_node("Click"): $Click.play()
 
-# --- ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ОКОН ---
-
 func open_settings():
 	if has_node("Click"): $Click.play()
-	
-	# Если открыты кредиты — закрываем их без анимации (мгновенно) для скорости
 	if credit.visible:
 		credit.visible = false
 	
@@ -56,15 +47,12 @@ func open_settings():
 
 func open_credit():
 	if has_node("Click"): $Click.play()
-	
-	# Если открыт звук — закрываем его
 	if sound_settings.visible:
 		sound_settings.visible = false
 	
 	credit.visible = true
 	_animate_open(credit)
 
-# --- ЗАКРЫТИЕ ---
 
 func close_settings():
 	if has_node("Click"): $Click.play()
@@ -76,13 +64,11 @@ func close_credit():
 	await _animate_close(credit)
 	credit.visible = false
 
-# --- ПЕРЕХОДЫ ---
 
 func _on_play_pressed() -> void:
 	if has_node("Click"): $Click.play()
 	get_tree().change_scene_to_file("res://Game/level/level_1.tscn")
 
-# --- ЗВУК ---
 
 func _on_master_value_changed(v: float): _upd_bus("Master", v)
 func _on_music_value_changed(v: float): _upd_bus("Music", v)
@@ -94,7 +80,6 @@ func _upd_bus(bus_name: String, val: float):
 		AudioServer.set_bus_volume_db(idx, linear_to_db(val))
 		AudioServer.set_bus_mute(idx, val <= 0.001)
 
-# --- АНИМАЦИЯ ---
 
 func _animate_open(node):
 	node.scale = Vector2(1, 0.8)

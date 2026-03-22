@@ -2,9 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dgxde2rve0si6" path="res://Game/level/1111.png" id="1_ct27n"]
 [ext_resource type="Texture2D" uid="uid://ms4v216fg38f" path="res://Menu/Tile.png" id="1_k7e87"]
+[ext_resource type="Script" uid="uid://i8kgox0uejgd" path="res://Game/level/level_1.gd" id="1_vsl6p"]
 [ext_resource type="PackedScene" uid="uid://b33nkh1ynlfut" path="res://Game/Player/Exploid.tscn" id="2_ew1eq"]
 [ext_resource type="PackedScene" uid="uid://cjrfig1al5id6" path="res://Game/Enemy/knight.tscn" id="4_b2tqw"]
 [ext_resource type="Script" uid="uid://cud0u8mexs14q" path="res://Game/level/area_2d.gd" id="5_3r5vr"]
+[ext_resource type="AudioStream" uid="uid://d01bwgvi06i3u" path="res://Game/Music/Karl_Casey_-_Fight_Like_Hell_80663229.mp3" id="6_tfneb"]
+[ext_resource type="AudioStream" uid="uid://blrruio5pd7h1" path="res://Game/Music/Karl_Casey_-_Symptom_Of_A_Sick_Society_79823772.mp3" id="8_6wlcb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b2tqw"]
 texture = ExtResource("1_ct27n")
@@ -1324,6 +1327,7 @@ sources/0 = SubResource("TileSetAtlasSource_b2tqw")
 size = Vector2(77, 84)
 
 [node name="level 1" type="Node2D" unique_id=585641305]
+script = ExtResource("1_vsl6p")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1915305317]
 position = Vector2(97, -38)
@@ -1622,5 +1626,14 @@ script = ExtResource("5_3r5vr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1392660655]
 position = Vector2(-51.5, 101)
 shape = SubResource("RectangleShape2D_b2tqw")
+
+[node name="NormalMusic" type="AudioStreamPlayer" parent="." unique_id=724553642]
+stream = ExtResource("8_6wlcb")
+autoplay = true
+
+[node name="RageMusic" type="AudioStreamPlayer" parent="." unique_id=1329423867]
+stream = ExtResource("6_tfneb")
+volume_db = -80.0
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

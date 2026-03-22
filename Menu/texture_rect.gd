@@ -7,8 +7,6 @@ func _ready():
 
 func start_pulsing():
 	var tween = create_tween()
-	tween.set_loops() # Бесконечные повторения
-	
-	# Пульсация: увеличиваем и уменьшаем
+	tween.set_loops() 
 	tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.5)
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.5)

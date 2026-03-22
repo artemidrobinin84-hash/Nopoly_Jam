@@ -9,8 +9,8 @@ var current_health : int
 const BLOOD_SCENE = preload("res://Game/Enemy/Death.tscn")
 @export var speed : float = 80.0
 @export var attack_damage : int = 15
-@export var stop_distance : float = 50.0
-var can_attack = true  # Начинаем с true
+@export var stop_distance : float = 0
+var can_attack = true 
 var player = null
 var is_attacking = false
 var knockback_velocity = Vector2.ZERO
@@ -22,9 +22,7 @@ var knockback_velocity = Vector2.ZERO
 func _ready():
 	current_health = 50
 	add_to_group("enemy")
-	current_health = max_health # Теперь здоровье берется из max_health
-	add_to_group("enemy")
-	# Отправляем начальное значение, чтобы полоска сразу заполнилась
+	current_health = max_health
 	hp_changed.emit(current_health, max_health)
 func _physics_process(delta):
 	if player == null or not is_instance_valid(player):
@@ -42,7 +40,6 @@ func _physics_process(delta):
 	velocity = move_vel + knockback_velocity
 	move_and_slide()
 	
-	# Используем can_attack для проверки
 	if dist <= stop_distance + 100 and not is_attacking and can_attack:
 		start_attack()
 
@@ -63,18 +60,16 @@ func take_damage(amount: int):
 	hp_changed.emit(current_health, max_health)
 	
 	if current_health <= 0:
-		# Вызываем эффекты через синглтон
 		if current_health <= 0:
-			if Engine.time_scale > 0: # Если время ЕЩЕ не остановлено другим врагом
+			if Engine.time_scale > 0:
 				GlobalEffects.hit_stop(0.1)
 				GlobalEffects.hit_flash(0.1, 0.2)
 				GlobalEffects.do_chromatic(0.3, 8.0)
 				GlobalEffects.play_ultra_sound(ultra.stream)
 		if is_instance_valid(player) and player.has_method("shake_camera"):
-			player.shake_camera(40.0)
+			player.shake_camera(20.0)
 		
 		spawn_blood()
-		
 		visible = false
 		set_physics_process(false) 
 		queue_free()
@@ -96,13 +91,11 @@ func start_attack():
 	await melee_attack()
 	is_attacking = false
 	
-	# Запускаем кулдаун после атаки
 	if is_inside_tree():
 		await get_tree().create_timer(attack_cooldown).timeout
 		can_attack = true
 
 func melee_attack():
-	# 1. Initial check
 	if not is_inside_tree(): return
 	
 	var attack_direction = player.global_position
@@ -113,50 +106,39 @@ func melee_attack():
 		attack_visual.visible = true
 		attack_visual.play("Attack")
 	
-	# First wait
 	await get_tree().create_timer(0.1).timeout
 	
-	# 2. Check if we died during the wait
 	if not is_inside_tree(): return 
 	
 	if player and is_instance_valid(player) and global_position.distance_to(player.global_position) < attack_range * 1.5:
 		if player.has_method("take_damage"):
 			player.take_damage(attack_damage)
 	
-	# Second wait
 	await get_tree().create_timer(0.1).timeout
 	
-	# 3. Check again
 	if not is_inside_tree(): return
 	
 	if attack_visual:
 		attack_visual.visible = false
 		attack_visual.stop()
-		
-	# Final cooldown wait (if you have more logic below)
 	await get_tree().create_timer(0.15).timeout
 	if not is_inside_tree(): return
 	
-	# ... rest of your logic
 	
-	# Наносим урон, если игрок все еще в зоне
 	if player and is_instance_valid(player) and is_inside_tree():
 		if global_position.distance_to(player.global_position) < attack_range * 1.5:
 			if player.has_method("take_damage"):
 				player.take_damage(attack_damage)
 	
-	# Ждем и проверяем существование
 	if is_inside_tree():
 		await get_tree().create_timer(0.1).timeout
 	else:
 		return
 	
-	# Скрываем визуал атаки
 	if attack_visual and is_inside_tree():
 		attack_visual.visible = false
 		attack_visual.stop()
 
-# Сигнал от Area2D которая внутри Attac
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("take_damage"):
 		body.take_damage(attack_damage)

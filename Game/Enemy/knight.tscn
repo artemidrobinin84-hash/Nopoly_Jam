@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://baxw38pw2efol" path="res://Game/Enemy/knight.gd" id="1_6jogb"]
 [ext_resource type="Texture2D" uid="uid://b8a6w4i78pkcy" path="res://Game/Enemy/KnightSprite.png" id="1_mkagr"]
 [ext_resource type="Texture2D" uid="uid://c1dqxk5mkb47t" path="res://Game/Enemy/Attack.png" id="2_m5bfe"]
-[ext_resource type="AudioStream" uid="uid://ddjb0kwigntc" path="res://Game/Sound/missing-a-sword-fight.mp3" id="4_8ia3n"]
+[ext_resource type="AudioStream" uid="uid://dj8c2lq5ugwtc" path="res://Game/Sound/sword-swing-during-combat.mp3" id="4_pv2qn"]
 [ext_resource type="Texture2D" uid="uid://csveldkab0363" path="res://Game/Attack/XOXOBarUnder.png" id="5_wfc0k"]
 [ext_resource type="Texture2D" uid="uid://ba5dasg4r5iql" path="res://Game/Enemy/XOXOBarProgress.png" id="6_ajkai"]
-[ext_resource type="AudioStream" uid="uid://3ftokyo8cc66" path="res://Game/Sound/parry-ultrakill.mp3" id="8_a5dix"]
+[ext_resource type="AudioStream" uid="uid://bm6p3jpbgvdvw" path="res://Game/Sound/parry-ultrakill (mp3cut.net).mp3" id="8_a5dix"]
 [ext_resource type="Script" uid="uid://bs040s1cwh27d" path="res://Game/Enemy/texture_progress_bar.gd" id="8_pv2qn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hd25i"]
@@ -44,9 +44,8 @@ animations = [{
 collision_layer = 3
 motion_mode = 1
 script = ExtResource("1_6jogb")
+max_health = 300
 speed = 250.0
-attack_damage = 5
-stop_distance = 0.0
 attack_cooldown = 0.5
 attack_range = 50.0
 
@@ -82,14 +81,14 @@ animation = &"Attack"
 frame_progress = 1.0
 
 [node name="Slash" type="AudioStreamPlayer" parent="." unique_id=1938862032]
-stream = ExtResource("4_8ia3n")
+stream = ExtResource("4_pv2qn")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1081802544]
 top_level = true
 texture_filter = 1
-offset_left = -23.0
-offset_top = -36.0
-offset_right = 31.0
+offset_left = -16.0
+offset_top = -33.0
+offset_right = 23.0
 offset_bottom = -29.0
 pivot_offset = Vector2(64, 16)
 nine_patch_stretch = true

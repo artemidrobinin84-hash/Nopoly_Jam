@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ybb4pdwfkvfh"]
+
+[ext_resource type="Texture2D" uid="uid://dqdj5ekv6lcdq" path="res://Game/level_2/Girl.png" id="1_4j2xp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s2v7"]
+size = Vector2(52.666668, 46.333336)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1461039687]
+scale = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=207253211]
+position = Vector2(-0.33333492, 2.166667)
+shape = SubResource("RectangleShape2D_5s2v7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1649698288]
+texture = ExtResource("1_4j2xp")

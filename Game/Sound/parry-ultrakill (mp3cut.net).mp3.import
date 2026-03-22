@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bm6p3jpbgvdvw"
+path="res://.godot/imported/parry-ultrakill (mp3cut.net).mp3-dcbc5b92e62fe6fc535373bc17fc326d.mp3str"
+
+[deps]
+
+source_file="res://Game/Sound/parry-ultrakill (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/parry-ultrakill (mp3cut.net).mp3-dcbc5b92e62fe6fc535373bc17fc326d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

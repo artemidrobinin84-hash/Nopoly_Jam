@@ -13,7 +13,8 @@ config_version=5
 config/name="Nopoly-Jam"
 run/main_scene="uid://cdpl1dhhd8umg"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 
 [audio]
 
@@ -22,6 +23,7 @@ buses/default_bus_layout="uid://b5mxx2ygo3rtj"
 [autoload]
 
 GlobalEffects="*uid://c1n52opsrqd8c"
+Rage="*uid://ywv5nlwa6lmu"
 
 [display]
 
@@ -30,7 +32,10 @@ window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [input]
 

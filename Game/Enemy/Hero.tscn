@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dylssy8ijsl4r"]
+
+[ext_resource type="Texture2D" uid="uid://b28qffv6wsnwp" path="res://Game/Enemy/Hero.png" id="1_jx6hg"]
+[ext_resource type="Script" uid="uid://8sqx4x3g2c6" path="res://Game/Enemy/hero.gd" id="1_nlgev"]
+[ext_resource type="Texture2D" uid="uid://c3ffcdod8ucns" path="res://Game/Enemy/Attack1.png" id="3_imvrg"]
+[ext_resource type="AudioStream" uid="uid://ddjb0kwigntc" path="res://Game/Sound/missing-a-sword-fight.mp3" id="3_vjn44"]
+[ext_resource type="AudioStream" uid="uid://bm6p3jpbgvdvw" path="res://Game/Sound/parry-ultrakill (mp3cut.net).mp3" id="4_imvrg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhpyy"]
+size = Vector2(71, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jx6hg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jx6hg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jx6hg"]
+radius = 954.00055
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw0c4"]
+size = Vector2(180, 176)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nlgev"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_imvrg")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 10.0
+}]
+
+[node name="Hero" type="CharacterBody2D" unique_id=1493249234]
+motion_mode = 1
+script = ExtResource("1_nlgev")
+max_health = 1000
+speed = 500.0
+attack_damage = 50
+stop_distance = 0.0
+attack_cooldown = 0.1
+attack_range = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=733798391]
+position = Vector2(38.5, -1)
+shape = SubResource("RectangleShape2D_jhpyy")
+
+[node name="Hero" type="AnimatedSprite2D" parent="." unique_id=889880976]
+position = Vector2(23.999998, 0)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_jx6hg")
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1351397787]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1947475055]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=846146356]
+shape = SubResource("CircleShape2D_jx6hg")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=673269620]
+position = Vector2(-34, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=391192927]
+position = Vector2(72, -2)
+shape = SubResource("RectangleShape2D_uw0c4")
+
+[node name="Attac1" type="AnimatedSprite2D" parent="Area2D2" unique_id=540835540]
+visible = false
+position = Vector2(104.67188, -4.5000114)
+scale = Vector2(4.5136714, 4.604167)
+sprite_frames = SubResource("SpriteFrames_nlgev")
+animation = &"Attack"
+
+[node name="Slash" type="AudioStreamPlayer" parent="." unique_id=97611664]
+stream = ExtResource("3_vjn44")
+volume_db = -5.0
+pitch_scale = 0.9
+
+[node name="ultra" type="AudioStreamPlayer" parent="." unique_id=102983102]
+stream = ExtResource("4_imvrg")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
